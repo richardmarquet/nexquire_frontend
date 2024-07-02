@@ -1,11 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { User } from "@supabase/supabase-js";
+import { Profile } from "./UserFakeTypesDeleteLater";
 
 interface Props {
-  users: User[];
+  users: Profile[];
 }
 
-const UserInfo = ({ projects }: Props) => {
+const UserInfo = ({ users }: Props) => {
   return (
     <div className="">
       <div className="grid gap-4 grid-cols-3">
@@ -28,7 +28,7 @@ const UserInfo = ({ projects }: Props) => {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{projects.length}</div>
+            <div className="text-2xl font-bold">{users.length}</div>
             <p className="text-xs text-muted-foreground text-green-700">
               Projects currently active
             </p>
