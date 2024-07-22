@@ -80,4 +80,8 @@
   .w-calc {
     width: calc(100vw - 17.5rem);
   }
+
+  .w-calc2 {
+    width: calc(100vw - 3.5rem);
+  }
 }

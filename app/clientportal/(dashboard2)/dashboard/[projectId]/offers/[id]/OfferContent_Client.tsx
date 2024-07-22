@@ -270,8 +270,8 @@ const OfferContent_Client = ({ offer, project }: Props) => {
                           </Label>
                           <Input
                             id={`budget-${request.item_name}`}
-                            type="number"
-                            defaultValue={`${request.budget}`}
+                            type=""
+                            defaultValue={"$"+`${request.budget}`}
                             disabled
                           />
                         </TableCell>

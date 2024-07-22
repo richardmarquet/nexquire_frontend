@@ -2,7 +2,8 @@ import { GetUsers } from "@/components/actions/users/UserActions";
 import { admin_users, regular_users } from "./UserDemoData";
 import { User } from "./UserTypes";
 import UsersTable from "./UsersTable";
-import UsersPageContent from "./UsersPageContent";
+//import UsersPageContent from "./UsersPageContent";
+import UsersPageContent from "./components/UsersPageContent";
 import { GetProjectById } from "@/components/actions/projects/ProjectActions";
 
 interface Props {
@@ -34,7 +35,8 @@ const UsersPage = async ({ params }: Props) => {
   return (
     <div className="">
       {/* <UsersTable admin_users={users[0]} regular_users={users[1]} /> */}
-      <UsersPageContent project={project} users={users}/>
+      {/* <UsersPageContent project={project} users={users}/> */}
+      <UsersPageContent project={project} users={users} />
     </div>
   );
 };

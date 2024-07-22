@@ -41,7 +41,7 @@ const PostsPageContent = ({ project, posts }: Props) => {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{posts.length}</div>
+            <div className="text-2xl font-bold">{project.num_posts}</div>
             <p className="text-xs text-muted-foreground text-green-700">
               All active posts
             </p>

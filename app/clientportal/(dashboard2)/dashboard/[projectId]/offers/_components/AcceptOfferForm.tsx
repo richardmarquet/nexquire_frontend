@@ -153,6 +153,7 @@ const AcceptOfferForm = ({ offer, project }: Props) => {
                           <TableRow>
                             <TableHead>Request</TableHead>
                             <TableHead>Amount Paid</TableHead>
+                            <TableHead>Budget</TableHead>
                           </TableRow>
                         </TableHeader>
                         <TableBody>
@@ -167,6 +168,9 @@ const AcceptOfferForm = ({ offer, project }: Props) => {
                                   type="number"
                                 />
                                 {errors.amountPaidForEachRequest?.[index] && <p>{errors.amountPaidForEachRequest?.[index]?.message}</p>}
+                              </TableCell>
+                              <TableCell>
+                                <Input type="" disabled value={"$"+request.budget ?? "NA"}/>
                               </TableCell>
                             </TableRow>
                           ))}
