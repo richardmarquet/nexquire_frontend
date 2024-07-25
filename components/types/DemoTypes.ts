@@ -41,6 +41,7 @@ interface Post {
   active: boolean | null;
   requests: Request[];
   project: Project | null;
+  owner: string;
 }
 
 interface Task {
