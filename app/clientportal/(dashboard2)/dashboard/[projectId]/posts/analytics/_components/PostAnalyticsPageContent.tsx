@@ -1,24 +1,20 @@
-"use client"
-import React from "react";
-import { Offer, Post, Project, User } from "@/components/types/DemoTypes";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   GetNumberOfRequestsCompleted,
   GetNumberOfRequestsNotConpleted,
 } from "@/components/helpers/ProjectHelperFunctions";
-import PostsTable from "./PostsTable2";
-import { CircularProgressbar } from "react-circular-progressbar";
+import { Post, Project } from "@/components/types/DemoTypes";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import React from "react";
 import "react-circular-progressbar/dist/styles.css";
+import CircularProgressBar from "@/components/ui/CircularProgressBar";
 import PostsOvertime from "./PostsOvertime";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 
 interface Props {
   project: Project;
   posts: Post[];
 }
-const PostsPageContent = ({ project, posts }: Props) => {
 
+const PostAnalyticsPageContent = ({ project, posts }: Props) => {
   const percent = 40;
 
   return (
@@ -139,22 +135,7 @@ const PostsPageContent = ({ project, posts }: Props) => {
             </CardHeader>
             <CardContent className="flex justify-center items-center text">
               <div className="w-[60%]">
-                <CircularProgressbar
-                  value={percent}
-                  text={`4/10`}
-                  styles={{
-                    path: {
-                      stroke: `rgba(1, 163, 28, 1)`,
-                    },
-                    trail: {
-                      stroke: `#d6d6d6`,
-                    },
-                    text: {
-                      fill: `rgba(1, 163, 28, 1)`,
-                      fontSize: "16px",
-                    },
-                  }}
-                />
+                <CircularProgressBar percent={percent} />
               </div>
             </CardContent>
           </Card>
@@ -168,22 +149,7 @@ const PostsPageContent = ({ project, posts }: Props) => {
             </CardHeader>
             <CardContent className="flex justify-center items-center">
               <div className="w-[60%]">
-                <CircularProgressbar
-                  value={percent + 20}
-                  text={`9/15`}
-                  styles={{
-                    path: {
-                      stroke: `rgba(1, 163, 28, 1)`,
-                    },
-                    trail: {
-                      stroke: `#d6d6d6`,
-                    },
-                    text: {
-                      fill: `rgba(1, 163, 28, 1)`,
-                      fontSize: "16px",
-                    },
-                  }}
-                />
+                <CircularProgressBar percent={percent} />
               </div>
             </CardContent>
           </Card>
@@ -201,21 +167,8 @@ const PostsPageContent = ({ project, posts }: Props) => {
           </Card>
         </div>
       </div>
-      <div>
-        <div className="flex justify-between items-center">
-          <h1 className="text-xl font-bold mt-10 mb-5">Recent Posts</h1>
-          <div>
-            <Button variant={"outline"} asChild>
-              <Link href={`/clientportal/dashboard/${project.id}/posts/createpost`}>
-                Create Post
-              </Link>
-            </Button>
-          </div>
-        </div>
-        {/* <PostsTable posts={posts} projectId={project.id}/> */}
-      </div>
     </div>
   );
 };
 
-export default PostsPageContent;
+export default PostAnalyticsPageContent;

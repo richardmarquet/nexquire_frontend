@@ -83,6 +83,7 @@ const page = () => {
       active: true,
       requests: [requests[0]],
       project: project,
+      owner: "testOwner",
     },
   ];
 

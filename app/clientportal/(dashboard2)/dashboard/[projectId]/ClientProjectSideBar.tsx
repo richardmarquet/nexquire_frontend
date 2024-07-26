@@ -24,7 +24,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
 
 interface SidebarDashboardOption {
   label: string;
@@ -79,7 +79,29 @@ const SETTINGS__OPTION: SidebarDashboardOption = {
   BadgeValue: "",
 };
 
+const listOfLinks = ["home", "analytics", "offers", "posts", "settings", "users"];
+
+// We use this because there are cases where two of the possible path names show up in one link. We only want the first one
+const GetFirstMatchedWord = (text: string, words: string[]): string => {
+  let curMin = 10000000000;
+  let curLink = "";
+  listOfLinks.forEach(link => {
+    const index = text.indexOf(link);
+    if (index != -1 && index < curMin) {
+      curLink = link
+    }
+  });
+  return curLink;
+}
+
 const ClientProjectSideBar = ({ project }: Props) => {
+  const [firstMatchedWord, setFirstMatchedWord] = React.useState("");
+  const path = usePathname();
+
+  useEffect(() => {
+    setFirstMatchedWord(() => GetFirstMatchedWord(path, listOfLinks));
+  })
+
   return (
     <aside className="group fixed inset-y-0 left-0 z-50 hidden w-14 flex-col border-r bg-background sm:flex hover:w-48 transition-all">
       <nav className="flex flex-col items-center justify-between gap-1 px-2 sm:pt-6 sm:pb-1 w-full">
@@ -93,14 +115,14 @@ const ClientProjectSideBar = ({ project }: Props) => {
           </Link>
         </div>
       </nav>
-      {CreateSidebarOption(HOME_OPTION, project.id)}
+      {SidebarOption(HOME_OPTION, project.id, firstMatchedWord)}
       <Separator orientation="horizontal" />
-      {CreateSidebarOption(ANALYTICS_OPTION, project.id)}
-      {CreateSidebarOption(USERS_OPTION, project.id)}
-      {CreateSidebarOption(POSTS_OPTION, project.id)}
-      {CreateSidebarOption(OFFERS_OPTION, project.id)}
+      {SidebarOption(ANALYTICS_OPTION, project.id, firstMatchedWord)}
+      {SidebarOption(USERS_OPTION, project.id, firstMatchedWord)}
+      {SidebarOption(POSTS_OPTION, project.id, firstMatchedWord)}
+      {SidebarOption(OFFERS_OPTION, project.id, firstMatchedWord)}
       <Separator orientation="horizontal" />
-      {CreateSidebarOption(SETTINGS__OPTION, project.id)}
+      {SidebarOption(SETTINGS__OPTION, project.id, firstMatchedWord)}
       <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         <TooltipProvider>
           <Tooltip>
@@ -121,12 +143,12 @@ const ClientProjectSideBar = ({ project }: Props) => {
   );
 };
 
-const CreateSidebarOption = (
+const SidebarOption = (
   link: SidebarDashboardOption,
-  projectId: number
+  projectId: number,
+  matchedWord: string
 ) => {
-  const path = usePathname();
-  const isActive = path.includes(link.href);
+  const isActive = matchedWord === link.href;
 
   const linkStyle = isActive
     ? "w-full h-10 flex items-center px-1 rounded-lg bg-accent text-accent-foreground transition-all"
