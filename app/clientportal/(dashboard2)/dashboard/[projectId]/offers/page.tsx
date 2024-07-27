@@ -1,21 +1,5 @@
-import { Offer } from "@/components/types/DemoTypes";
-import {
-  GetAllOffersForClient,
-  GetAllPendingApprovalOffers,
-} from "@/components/actions/offers/OfferActions";
-import { GetUserGroupType } from "@/components/actions/users/UserActions";
-import OffersTable_Client from "./_components/OffersTable_Client";
-import OffersPageContent from "./_components/OffersPageContent";
-
-// Make a file for this
-
-const priorityMap = {
-  Low: 1,
-  Medium: 2,
-  High: 3,
-  "Very High": 4,
-  "Immediate Action": 5,
-};
+import { redirect, RedirectType } from "next/navigation";
+import { GetProjectById } from "@/components/actions/projects/ProjectActions";
 
 interface OffersProps {
   searchParams?: {
@@ -35,15 +19,12 @@ const page = async ({searchParams, params}: OffersProps) => {
     throw "Invalid projectId";
   }
 
-  const offers = await GetAllOffersForClient();
+  const project = await GetProjectById(projectIdNum);
+  if (!project) {
+    throw "Project not found";
+  }
 
-  console.log(offers);
-
-  return (
-    <div>
-      <OffersPageContent offers={offers} projectId={projectIdNum} />
-    </div>
-  );
+  redirect("offers/alloffers", RedirectType.push);
 };
 
 export default page;

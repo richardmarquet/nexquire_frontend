@@ -1,5 +1,5 @@
 "use client"
-import { Post } from "@/components/types/DemoTypes";
+import { Offer } from "@/components/types/DemoTypes";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -40,7 +40,7 @@ import {
 } from "@/components/ui/table";
 import moment from "moment-timezone";
 
-export const columns: ColumnDef<Post>[] = [
+export const columns: ColumnDef<Offer>[] = [
   {
     accessorKey: "title",
     header: "Title",
@@ -49,31 +49,18 @@ export const columns: ColumnDef<Post>[] = [
       return <span className="text-sm">{title}</span>;
     },
   },
-  //   {
-  //     accessorKey: "description",
-  //     header: "Description",
-  //     cell: ({ row }) => {
-  //       let description = row.original.description;
-  //       if (description && description.length >= 197) {
-  //         description = description?.substring(0, 198);
-  //         description += "...";
-  //       }
-
-  //       return <span className="text-xs">{description}</span>;
-  //     },
-  //   },
   {
-    accessorKey: "owner",
-    header: "Owner",
+    accessorKey: "vendor_name",
+    header: "Vendor",
     cell: ({ row }) => {
-      let owner = row.original.owner;
-      return <span className="text-sm">{owner}</span>;
+      let vendor = row.original.vendor_name;
+      return <span className="text-sm">{vendor}</span>;
     },
   },
   {
     header: "Requests",
     cell: ({ row }) => {
-      let request = row.original.requests;
+      let request = row.original.task.requests;
       return <span className="text-sm">{request.length}</span>;
     },
   },
@@ -126,11 +113,11 @@ export const columns: ColumnDef<Post>[] = [
 type FILTER_POST_ACTIVE = "active" | "inactive" | "both";
 
 interface Props {
-  data: Post[];
+  data: Offer[];
   projectId: number;
 }
 
-const PostsTable = ({ data, projectId }: Props) => {
+const OffersTable = ({ data, projectId }: Props) => {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
@@ -138,7 +125,7 @@ const PostsTable = ({ data, projectId }: Props) => {
   const [columnVisibility, setColumnVisibility] =
     React.useState<VisibilityState>({});
 
-  const table = useReactTable<Post>({
+  const table = useReactTable<Offer>({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
@@ -175,7 +162,7 @@ const PostsTable = ({ data, projectId }: Props) => {
   const handleMouseUp = (rowId: number) => {
     const selection = window.getSelection();
     if (!selection || selection.toString().length === 0) {
-      router.push(`/clientportal/dashboard/${projectId}/posts/${rowId}`);
+      router.push(`/clientportal/dashboard/${projectId}/offers/${rowId}`);
     }
   };
 
@@ -192,10 +179,10 @@ const PostsTable = ({ data, projectId }: Props) => {
             className="border-none"
           />
           <Input
-            placeholder="Filter owner..."
-            value={(table.getColumn("owner")?.getFilterValue() as string) ?? ""}
+            placeholder="Filter vendor..."
+            value={(table.getColumn("vendor_name")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
-              table.getColumn("owner")?.setFilterValue(event.target.value)
+              table.getColumn("vendor_name")?.setFilterValue(event.target.value)
             }
             className="border-none"
           />
@@ -329,4 +316,4 @@ const PostsTable = ({ data, projectId }: Props) => {
   );
 };
 
-export default PostsTable;
+export default OffersTable;

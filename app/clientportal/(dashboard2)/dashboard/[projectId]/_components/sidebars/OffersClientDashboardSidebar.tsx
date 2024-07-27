@@ -20,31 +20,24 @@ interface Props {
   project: Project;
 }
 
-const PostsClientDashboardSidebar = ({ project }: Props) => {
-  const ALL_POSTS: SidebarDashboardOption = {
-    label: "All Posts",
-    href: "posts/allposts",
+const OffersClientDashboardSidebar = ({ project }: Props) => {
+  const ALL_OFFERS: SidebarDashboardOption = {
+    label: "All Offers",
+    href: "offers/alloffers",
     icon: null,
     BadgeValue: "",
   };
 
-  const MY_POSTS: SidebarDashboardOption = {
-    label: "My Posts",
-    href: "posts/myposts",
+  const MY_OFFERS: SidebarDashboardOption = {
+    label: "My Offers",
+    href: "offers/myoffers",
     icon: null,
     BadgeValue: "",
   };
 
-  const CREATE_POST: SidebarDashboardOption = {
-    label: "Create Post",
-    href: "posts/createpost",
-    icon: null,
-    BadgeValue: "",
-  }
-
-  const POSTS_ANALYTICS: SidebarDashboardOption = {
+  const OFFERS_ANALYTICS: SidebarDashboardOption = {
     label: "Analytics",
-    href: "posts/analytics",
+    href: "offers/analytics",
     icon: null,
     BadgeValue: "",
   }
@@ -63,12 +56,11 @@ const PostsClientDashboardSidebar = ({ project }: Props) => {
       </div>
       <nav className="flex-1">
         <h1 className="text-sm font-bold tracking-widest opacity-50 px-5 py-1 lg:px-7">View</h1>
-        <BasicSidebarOption option={ALL_POSTS} projectId={project.id} />
-        <BasicSidebarOption option={MY_POSTS} projectId={project.id} />
-        <BasicSidebarOption option={CREATE_POST} projectId={project.id} />
+        <BasicSidebarOption option={ALL_OFFERS} projectId={project.id} />
+        <BasicSidebarOption option={MY_OFFERS} projectId={project.id} />
         <Separator orientation="horizontal" className="my-1"/>
         <h1 className="text-sm font-bold tracking-widest opacity-50 px-5 py-1 lg:px-7">Tools</h1>
-        <BasicSidebarOption option={POSTS_ANALYTICS} projectId={project.id} />
+        <BasicSidebarOption option={OFFERS_ANALYTICS} projectId={project.id} />
       </nav>
       <div className="mt-auto p-4">
         <Card>
@@ -85,4 +77,4 @@ const PostsClientDashboardSidebar = ({ project }: Props) => {
   );
 };
 
-export default PostsClientDashboardSidebar;
+export default OffersClientDashboardSidebar;

@@ -1,15 +1,9 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import {
-  Bell,
-  Package2,
-} from "lucide-react";
+import { Bell, Package2 } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Project } from "@/components/types/DemoTypes";
 import SidebarContainer from "../containers/SidebarContainer";
 import { SidebarDashboardOption } from "@/components/types/nexquire_types";
@@ -20,34 +14,27 @@ interface Props {
   project: Project;
 }
 
-const PostsClientDashboardSidebar = ({ project }: Props) => {
-  const ALL_POSTS: SidebarDashboardOption = {
-    label: "All Posts",
-    href: "posts/allposts",
+const AnalyticsClientDashboardSidebar = ({ project }: Props) => {
+  const GENERAL_ANALYTICS: SidebarDashboardOption = {
+    label: "General Analytics",
+    href: "analytics/general",
     icon: null,
     BadgeValue: "",
   };
-
-  const MY_POSTS: SidebarDashboardOption = {
-    label: "My Posts",
-    href: "posts/myposts",
-    icon: null,
-    BadgeValue: "",
-  };
-
-  const CREATE_POST: SidebarDashboardOption = {
-    label: "Create Post",
-    href: "posts/createpost",
-    icon: null,
-    BadgeValue: "",
-  }
 
   const POSTS_ANALYTICS: SidebarDashboardOption = {
-    label: "Analytics",
-    href: "posts/analytics",
+    label: "Post Analytics",
+    href: "analytics/posts",
     icon: null,
     BadgeValue: "",
-  }
+  };
+
+  const OFFERS_ANALYTICS: SidebarDashboardOption = {
+    label: "Offer Analytics",
+    href: "analytics/offers",
+    icon: null,
+    BadgeValue: "",
+  };
 
   return (
     <SidebarContainer>
@@ -62,13 +49,13 @@ const PostsClientDashboardSidebar = ({ project }: Props) => {
         </Button>
       </div>
       <nav className="flex-1">
-        <h1 className="text-sm font-bold tracking-widest opacity-50 px-5 py-1 lg:px-7">View</h1>
-        <BasicSidebarOption option={ALL_POSTS} projectId={project.id} />
-        <BasicSidebarOption option={MY_POSTS} projectId={project.id} />
-        <BasicSidebarOption option={CREATE_POST} projectId={project.id} />
-        <Separator orientation="horizontal" className="my-1"/>
-        <h1 className="text-sm font-bold tracking-widest opacity-50 px-5 py-1 lg:px-7">Tools</h1>
+        <h1 className="text-sm font-bold tracking-widest opacity-50 px-5 py-1 lg:px-7">
+          Tools
+        </h1>
+        <BasicSidebarOption option={GENERAL_ANALYTICS} projectId={project.id} />
         <BasicSidebarOption option={POSTS_ANALYTICS} projectId={project.id} />
+        <BasicSidebarOption option={OFFERS_ANALYTICS} projectId={project.id} />
+        <Separator orientation="horizontal" className="my-1" />
       </nav>
       <div className="mt-auto p-4">
         <Card>
@@ -85,4 +72,4 @@ const PostsClientDashboardSidebar = ({ project }: Props) => {
   );
 };
 
-export default PostsClientDashboardSidebar;
+export default AnalyticsClientDashboardSidebar;

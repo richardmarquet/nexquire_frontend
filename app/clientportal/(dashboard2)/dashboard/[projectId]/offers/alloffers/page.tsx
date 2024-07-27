@@ -1,12 +1,7 @@
+import { GetAllOffersForClient } from "@/components/actions/offers/OfferActions";
 import React from "react";
-import {
-  GetAllPostsCreatedByClient,
-  GetAllPostsInProject,
-} from "@/components/actions/posts/PostActions";
-import PostsPageContent from "./_components/PostsPageContent";
-import { PriorityLevel } from "@/components/types/DemoTypes";
 import { GetProjectById } from "@/components/actions/projects/ProjectActions";
-import { redirect, RedirectType } from "next/navigation";
+import AllOffersPageContent from "./_components/AllOffersPageContent";
 
 interface Props {
   params: {
@@ -27,7 +22,16 @@ const page = async ({ params }: Props) => {
     throw "Project not found";
   }
 
-  redirect("posts/allposts", RedirectType.push);
+  const offers = await GetAllOffersForClient();
+  if (!offers) {
+    return <h1>No offers...</h1>;
+  }
+
+  return (
+    <div>
+      <AllOffersPageContent offers={offers} project={project} />
+    </div>
+  );
 };
 
 export default page;

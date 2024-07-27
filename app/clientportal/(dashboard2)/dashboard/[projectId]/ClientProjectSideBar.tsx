@@ -60,14 +60,14 @@ const USERS_OPTION: SidebarDashboardOption = {
 
 const POSTS_OPTION: SidebarDashboardOption = {
   label: "Posts",
-  href: "posts",
+  href: "posts/allposts",
   icon: Milestone,
   BadgeValue: "",
 };
 
 const OFFERS_OPTION: SidebarDashboardOption = {
   label: "Offers",
-  href: "offers",
+  href: "offers/alloffers",
   icon: Send,
   BadgeValue: "",
 };
