@@ -203,6 +203,7 @@ const CreatePostsForm = ({
     });
 
     router.replace(`/clientportal/dashboard/${project.id}/posts`);
+    router.refresh();
   };
 
   return (

@@ -6,7 +6,7 @@ import createSupabaseServerClient from "@/lib/supabase/server";
 import { User as SupabaseUser } from "@supabase/supabase-js";
 import { redirect, useRouter } from "next/navigation";
 
-export async function GetUsers(): Promise<User[] | null> {
+export async function   GetUsers(): Promise<User[] | null> {
   const supabase = await createSupabaseServerClient();
 
   const {

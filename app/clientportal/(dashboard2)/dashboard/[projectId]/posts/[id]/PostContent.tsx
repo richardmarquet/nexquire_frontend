@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   Select,
   SelectContent,
@@ -36,7 +35,6 @@ import {
   CalculateTotalSpentOnPost,
   CaluclateTotalBudgetOnPost,
 } from "../../ProjectHelperFunctions";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Progress } from "@/components/ui/progress";
 

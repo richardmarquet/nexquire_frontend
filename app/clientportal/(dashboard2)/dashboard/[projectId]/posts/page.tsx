@@ -6,6 +6,7 @@ import {
 import PostsPageContent from "./_components/PostsPageContent";
 import { PriorityLevel } from "@/components/types/DemoTypes";
 import { GetProjectById } from "@/components/actions/projects/ProjectActions";
+import { redirect, RedirectType } from "next/navigation";
 
 interface Props {
   params: {
@@ -26,16 +27,7 @@ const page = async ({ params }: Props) => {
     throw "Project not found";
   }
 
-  const posts = await GetAllPostsInProject(projectIdNum);
-  if (!posts) {
-    return <div>No posts in this project</div>;
-  }
-
-  return (
-    <div className="">
-      <PostsPageContent project={project} posts={posts} />
-    </div>
-  );
+  redirect("posts/allposts", RedirectType.push);
 };
 
 export default page;

@@ -1,40 +1,8 @@
 "use client"
+import { FormPopoverPrioritiesValues } from "@/components/popover_choice/FormPopoverData";
 import { Post, User } from "@/components/types/DemoTypes";
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
-import {
-  ArrowBigDownDash,
-  CalendarIcon,
-  Check,
-  ChevronsUpDown,
-} from "lucide-react";
-import { useState, Ref } from "react";
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { FormPopoverPrioritiesValues } from "@/components/popover_choice/FormPopoverData";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Command,
   CommandEmpty,
@@ -42,11 +10,39 @@ import {
   CommandInput,
   CommandItem,
 } from "@/components/ui/command";
+import {
+  Dialog,
+  DialogContent,
+  DialogTitle
+} from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import MultipleSelector, { Option } from "@/components/ui/MultipleSelector";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Textarea } from "@/components/ui/textarea";
-import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
+import {
+  ArrowBigDownDash,
+  CalendarIcon,
+  Check,
+  ChevronsUpDown,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
+import { Ref, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { z } from "zod";
 
 const optionSchema = z.object({
   label: z.string(),
@@ -116,7 +112,7 @@ const NotificationDrawerTaskCreation = ({
 
     // same as above, dumb...
     const userId: string = users.find((user) => user.username === data.username)
-      ?.id!;
+      ?.id!.toString()!;
 
     setDialogOpen(false);
 

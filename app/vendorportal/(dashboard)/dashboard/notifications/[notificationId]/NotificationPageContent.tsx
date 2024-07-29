@@ -237,7 +237,7 @@ const NotificationPageContent = ({ notification, users }: Props) => {
                     <Box className="" />
                   </Badge>
                 </div>
-                <CardTitle className="text-2xl">
+                <CardTitle className="text-xl">
                   {PrettyPrintPrimaryTags(notification.requests)}
                 </CardTitle>
               </CardHeader>

@@ -46,3 +46,35 @@ export function GetTotalNumberOfRequests(posts: Post[]): number {
   });
   return requests;
 }
+
+export const NumToRole = (roleTypeNum: number): string => {
+  switch (roleTypeNum) {
+    case 0:
+    case 1:
+    case 2:
+      return "User";
+    case 3:
+    case 4:
+      return "Admin";
+    case 5:
+    case 6:
+      return "Owner";
+  }
+  throw "bad roleTypeNum";
+};
+
+export const GetColorForRole = (roleTypeNum: number): string => {
+  switch (roleTypeNum) {
+    case 0:
+    case 1:
+    case 2:
+      return "bg-green-400";
+    case 3:
+    case 4:
+      return "bg-yellow-400";
+    case 5:
+    case 6:
+      return "bg-red-400";
+  }
+  throw "bad roleTypeNum";
+};

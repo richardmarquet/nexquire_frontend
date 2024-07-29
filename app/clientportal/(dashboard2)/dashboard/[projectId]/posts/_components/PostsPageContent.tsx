@@ -6,7 +6,6 @@ import {
   GetNumberOfRequestsCompleted,
   GetNumberOfRequestsNotConpleted,
 } from "@/components/helpers/ProjectHelperFunctions";
-import PostsTable from "./PostsTable";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import PostsOvertime from "./PostsOvertime";
@@ -41,7 +40,7 @@ const PostsPageContent = ({ project, posts }: Props) => {
             </svg>
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">{posts.length}</div>
+            <div className="text-2xl font-bold">{project.num_posts}</div>
             <p className="text-xs text-muted-foreground text-green-700">
               All active posts
             </p>
@@ -212,7 +211,7 @@ const PostsPageContent = ({ project, posts }: Props) => {
             </Button>
           </div>
         </div>
-        <PostsTable posts={posts} projectId={project.id}/>
+        {/* <PostsTable posts={posts} projectId={project.id}/> */}
       </div>
     </div>
   );
