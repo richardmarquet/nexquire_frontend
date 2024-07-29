@@ -112,7 +112,7 @@ const NotificationDrawerTaskCreation = ({
 
     // same as above, dumb...
     const userId: string = users.find((user) => user.username === data.username)
-      ?.id!;
+      ?.id!.toString()!;
 
     setDialogOpen(false);
 

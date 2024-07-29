@@ -106,7 +106,7 @@ const NotificationTaskCreationDialog = ({ post, users }: Props) => {
 
     // same as above, dumb...
     const userId: string = users.find((user) => user.username === data.username)
-      ?.id!;
+      ?.id!.toString()!; // Check to see if this still works
 
     setDialogOpen(false);
 

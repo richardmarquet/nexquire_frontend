@@ -12,7 +12,7 @@ import {
 
 const page = () => {
   const admin: User = {
-    id: "1",
+    id: 1,
     username: "username",
     full_name: "jimmy",
     role: UserType.Admin,
@@ -66,7 +66,7 @@ const page = () => {
 
   const users: User[] = [
     {
-      id: "1",
+      id: 1,
       role: UserType.Admin,
       username: "JohnDoe",
       full_name: "John Doe",

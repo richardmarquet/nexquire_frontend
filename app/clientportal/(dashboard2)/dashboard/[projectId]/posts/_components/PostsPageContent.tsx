@@ -6,7 +6,6 @@ import {
   GetNumberOfRequestsCompleted,
   GetNumberOfRequestsNotConpleted,
 } from "@/components/helpers/ProjectHelperFunctions";
-import PostsTable from "./PostsTable2";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import PostsOvertime from "./PostsOvertime";
