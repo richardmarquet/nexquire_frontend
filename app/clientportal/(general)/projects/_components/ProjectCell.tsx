@@ -25,7 +25,7 @@ const ProjectCell = ({ project }: Props) => {
         <div className="flex justify-between items-center">
           <div className="font-bold text-xl">{project.title}</div>
           <div className="space-x-2">
-            <Link href={`/clientportal/dashboard/${project.id}/analytics`}>
+            <Link href={`/clientportal/dashboard/${project.id}/home`}>
               <Button variant={"outline"}>
                 <PackageOpen />
               </Button>

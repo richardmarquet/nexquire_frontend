@@ -11,7 +11,6 @@ interface Props {
 const AllPostsPageContent = ({ project, posts }: Props) => {
   return (
     <div>
-      <h1 className="text-xl font-medium pb-5">All Posts</h1>
       <PostsTable data={posts} projectId={project.id} />
     </div>
   );

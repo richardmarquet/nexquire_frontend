@@ -1,5 +1,20 @@
 import { FormPopoverValues } from "./FormPopoverTypes";
 
+const FormPopoverRoleValues: FormPopoverValues[] = [
+  {
+    value: "user",
+    label: "User",
+  },
+  {
+    value: "admin",
+    label: "Admin",
+  },
+  {
+    value: "owner",
+    label: "Owner",
+  },
+];
+
 const FormPopoverUserTypeValues: FormPopoverValues[] = [
   {
     value: "super admin",
@@ -35,7 +50,7 @@ const FormPopoverPrioritiesValues: FormPopoverValues[] = [
   {
     value: "immediate action",
     label: "Immediate Action",
-  }
+  },
 ];
 
 const FormPopoverUserValues: FormPopoverValues[] = [
@@ -65,4 +80,9 @@ const FormPopoverUserValues: FormPopoverValues[] = [
   },
 ];
 
-export { FormPopoverUserTypeValues, FormPopoverPrioritiesValues, FormPopoverUserValues };
+export {
+  FormPopoverUserTypeValues,
+  FormPopoverPrioritiesValues,
+  FormPopoverUserValues,
+  FormPopoverRoleValues,
+};

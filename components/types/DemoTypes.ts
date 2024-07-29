@@ -17,6 +17,8 @@ export enum UserType {
   "Super Admin",
 }
 
+export type Role = "user" | "admin" | "owner";
+
 interface Request {
   id: number;
   primary_tag: string;
@@ -119,7 +121,7 @@ interface Paid_Request {
 }
 
 interface User {
-  id: string;
+  id: number;
   username: string;
   full_name: string;
   role: UserType;

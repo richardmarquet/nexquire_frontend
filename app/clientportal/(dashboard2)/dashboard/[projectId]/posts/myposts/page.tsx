@@ -35,6 +35,7 @@ const page = async ({ params }: Props) => {
 
   return (
     <div>
+      <h1 className="text-xl font-medium pb-5">My Posts</h1>
       <MyPostsPageContent posts={posts} project={project} />
     </div>
   );

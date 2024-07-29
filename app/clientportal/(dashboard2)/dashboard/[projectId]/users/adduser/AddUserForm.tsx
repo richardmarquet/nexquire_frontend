@@ -1,34 +1,9 @@
 "use client";
 
 import { FormPopoverUserTypeValues } from "@/components/popover_choice/FormPopoverData";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@/components/ui/separator";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import { Button } from "@/components/ui/button";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Check, ChevronsUpDown } from "lucide-react";
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-} from "@/components/ui/command";
-import { cn } from "@/lib/utils";
-import {
-  UserTypes,
-  UserTypesArr,
+  UserTypes
 } from "@/components/popover_choice/FormPopoverTypes";
-import { toast } from "sonner";
-import { redirect, useRouter } from "next/navigation";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -37,10 +12,33 @@ import {
   AlertDialogDescription,
   AlertDialogFooter,
   AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
+  AlertDialogTitle
 } from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import {
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+} from "@/components/ui/command";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Check, ChevronsUpDown } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const schema = z.object({
   username: z.string().min(1, "Username is required"),

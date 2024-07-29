@@ -1,10 +1,7 @@
 import { GetUsers } from "@/components/actions/users/UserActions";
-import { admin_users, regular_users } from "./UserDemoData";
-import { User } from "./UserTypes";
-import UsersTable from "./UsersTable";
-//import UsersPageContent from "./UsersPageContent";
 import UsersPageContent from "./components/UsersPageContent";
 import { GetProjectById } from "@/components/actions/projects/ProjectActions";
+import AddUserDialog from "./components/AddUserDialog";
 
 interface Props {
   params: {
@@ -13,18 +10,14 @@ interface Props {
 }
 
 const UsersPage = async ({ params }: Props) => {
-  // const GetUsersFake = (): User[][] => {
-  //   return [admin_users, regular_users];
-  // };
-
-  //const users = GetUsersFake();
-
   const { projectId } = params;
 
   if (isNaN(Number(projectId))) {
     throw "project id is invalid";
   }
 
+  // TODO 
+  // Get all users but then filter out users already in this project
   const users = await GetUsers();
   const project = await GetProjectById(Number(projectId));
 
@@ -34,8 +27,10 @@ const UsersPage = async ({ params }: Props) => {
 
   return (
     <div className="">
-      {/* <UsersTable admin_users={users[0]} regular_users={users[1]} /> */}
-      {/* <UsersPageContent project={project} users={users}/> */}
+      <div className="flex justify-between">
+        <h1 className="text-xl font-medium pb-5">Users In Project</h1>
+        <AddUserDialog users={users} />
+      </div>
       <UsersPageContent project={project} users={users} />
     </div>
   );

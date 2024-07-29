@@ -1,9 +1,7 @@
-import React from 'react'
+import { redirect, RedirectType } from 'next/navigation'
 
 const page = () => {
-  return (
-    <div>Settings Page</div>
-  )
+  redirect("settings/general", RedirectType.push);
 }
 
 export default page
