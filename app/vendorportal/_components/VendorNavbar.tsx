@@ -21,15 +21,15 @@ type NavbarType = {
   href: string;
 };
 
-const ClientNavbar2 = () => {
+const VendorNavbar = () => {
   const navbar_links: NavbarType[] = [
     {
       label: "Home",
       href: `home`,
     },
     {
-      label: "Projects",
-      href: `projects`,
+      label: "Orginizations",
+      href: `orginizations`,
     },
     {
       label: "Users",
@@ -42,7 +42,7 @@ const ClientNavbar2 = () => {
   ];
 
   return (
-    <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 overflow-hidden">
+    <header className="sticky top-0 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6">
       <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
         <Link
           href="#"
@@ -143,7 +143,7 @@ const CreateNavbarOption = (link: NavbarType) => {
 
   return (
     <Link
-      href={`/clientportal/${link.href}`}
+      href={`/vendorportal/${link.href}`}
       className={linkStyle}
       key={link.label}
     >
@@ -152,4 +152,4 @@ const CreateNavbarOption = (link: NavbarType) => {
   );
 };
 
-export default ClientNavbar2;
+export default VendorNavbar;
